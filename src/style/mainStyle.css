@@ -1,0 +1,32 @@
+body{
+    margin:0;
+    padding:0;
+}
+body{
+    display:grid;
+    grid-template-columns: 2fr 5fr;
+}
+#content{
+    border-left:2px solid black;
+    display:flex;
+    gap:50px;
+    padding:10px 10px 0 10px;
+}
+.todoObject{
+    border-radius:10%;
+    padding:30px 40px 30px 40px;
+    display:flex;
+    flex-direction: column;
+    width:fit-content;
+    height:fit-content;
+    gap:10px;
+}
+.high{
+    background-color: #FF6B6B;
+}
+.medium{
+    background-color:#E9C46A;
+}
+.low{
+    background-color: #A8DADC;
+}
