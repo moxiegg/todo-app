@@ -6,11 +6,21 @@ body{
     display:grid;
     grid-template-columns: 2fr 5fr;
 }
+#sidebar{
+    display:flex;
+    flex-direction: column;
+    box-sizing: border-box;
+    height: 100vh;
+}
 #content{
     border-left:2px solid black;
+    padding:10px 10px 0 10px;
+    height: 100vh;
+    box-sizing: border-box;
+}
+.todoElement{
     display:flex;
     gap:50px;
-    padding:10px 10px 0 10px;
 }
 .todoObject{
     border-radius:10%;
@@ -20,6 +30,7 @@ body{
     width:fit-content;
     height:fit-content;
     gap:10px;
+    cursor:pointer;
 }
 .high{
     background-color: #FF6B6B;
@@ -29,4 +40,8 @@ body{
 }
 .low{
     background-color: #A8DADC;
+}
+.formElement{
+    display:flex;
+    flex-direction: column;
 }
