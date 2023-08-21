@@ -1,37 +1,51 @@
 import { todoForm } from "./formGenerator";
-import task from './todoModule.js';
-import {updateContent} from "./uiModule";
+import task from "./todoModule.js";
+import { updateContent } from "./uiModule";
 import "./style/mainStyle.css";
 
-export class project{
-    constructor(name){
-        this.tasks=[];
-        this.name=name;
-    }
-    getTasks(){
-        return this.tasks;
-    }
-    getName(){
-        return this.name;
-    }
-    addTask(obj){
-        this.tasks.push(obj);
-    }
-    removeTask(obj){
-        const ind = this.tasks.indexOf(obj);
-        if(ind!=-1)this.tasks.splice(ind,1);
-    }
+export class project {
+  constructor(name) {
+    this.tasks = [];
+    this.name = name;
+  }
+  getTasks() {
+    return this.tasks;
+  }
+  getName() {
+    return this.name;
+  }
+  addTask(obj) {
+    this.tasks.push(obj);
+  }
+  removeTask(obj) {
+    const ind = this.tasks.indexOf(obj);
+    if (ind != -1) this.tasks.splice(ind, 1);
+  }
 }
 
 // Add task button for the specific project
 function createAddButton(projObj) {
   const todoAddBtn = document.createElement("button");
   todoAddBtn.textContent = "Add Task";
-  todoAddBtn.className="card-button";
+  todoAddBtn.className = "card-button";
   const extraDiv = document.createElement("div");
   todoAddBtn.addEventListener("click", () => {
-    const formElement = todoForm();
-    updateContent(formElement);
+    const form = todoForm();
+    const backButton = document.createElement("button");
+
+    const submitButton = document.createElement("button");
+    submitButton.classList.add("formBtn", "card-button");
+    submitButton.textContent = "Submit";
+    backButton.textContent = "Back";
+    backButton.type="button";
+    backButton.addEventListener('click',()=>{
+      updateContent(showProject(projObj));
+    })
+    backButton.classList.add("formBtn","card-button"); 
+    form.firstChild.append(backButton);
+    form.firstChild.append(submitButton); 
+    updateContent(form);
+    const formElement = form.firstChild;
     formElement.addEventListener("submit", (e) => {
       e.preventDefault();
       const formData = new FormData(formElement);
@@ -51,15 +65,15 @@ function createAddButton(projObj) {
 //creates separate task elements from the provided task object and project
 function createTaskElement(taskObj, projObj) {
   const element = document.createElement("div");
-  element.classList.add("todoObject","card");
+  element.classList.add("todoObject", "card");
 
   const title = document.createElement("div");
   title.textContent = taskObj.getTitle();
-  title.className="card-title";
+  title.className = "card-title";
 
   const description = document.createElement("div");
   description.textContent = taskObj.getDescription();
-  description.className="card-content";
+  description.className = "card-content";
 
   const date = document.createElement("div");
   date.textContent = taskObj.getDate();
@@ -70,7 +84,7 @@ function createTaskElement(taskObj, projObj) {
     projObj.removeTask(taskObj);
     updateContent(showProject(projObj));
   });
-  element.append(title, description, date,delButton);
+  element.append(title, description, date, delButton);
 
   if (taskObj.priority == "high") element.classList.add("high");
   if (taskObj.priority == "low") element.classList.add("low");
@@ -83,22 +97,21 @@ export function showProject(projObj) {
   const projectContent = document.createElement("div");
   projectContent.className = "projectUI";
 
-  const projectHeader = document.createElement('div');
+  const projectHeader = document.createElement("div");
   projectHeader.className = "projectHeader";
-  
-  const projectTitle = document.createElement('div');
-  projectTitle.textContent=projObj.getName();
-  
+
+  const projectTitle = document.createElement("div");
+  projectTitle.textContent = projObj.getName();
+
   projectHeader.append(projectTitle);
   projectHeader.append(createAddButton(projObj));
-  
-  const tasks = document.createElement('div');
-  tasks.className="projectContent";
+
+  const tasks = document.createElement("div");
+  tasks.className = "projectContent";
   projObj.getTasks().forEach((task) => {
-    const t = createTaskElement(task,projObj);
+    const t = createTaskElement(task, projObj);
     tasks.append(t);
   });
-  
-  projectContent.append(projectHeader,tasks);
+  projectContent.append(projectHeader, tasks);
   return projectContent;
 }

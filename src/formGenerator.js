@@ -3,28 +3,34 @@ export function todoForm() {
   const extraDiv = document.createElement("div");
   extraDiv.className = "centerClass";
 
+  const formTitle = document.createElement("div");
+  formTitle.textContent = "Add Task";
+  formTitle.className = "formTitle";
+
   const formElement = document.createElement("form");
-  formElement.classList.add("formElement","card");
+  formElement.classList.add("formElement");
 
   const titleLabel = document.createElement("label");
-  titleLabel.textContent = "Title";
+  titleLabel.textContent = "Title  : ";
   titleLabel.className = "formLabel";
   const titleInput = document.createElement("input");
   titleInput.type = "text";
+  titleInput.maxLength=20;
   titleInput.name = "title";
 
 
-  const descriptionLabel = document.createElement("div");
-  descriptionLabel.textContent = "Description";
-  const descriptionInput = document.createElement("input");
-  descriptionInput.type = "textarea";
-  descriptionInput.rows = 4;
-  descriptionInput.cols = 50;
+  const descriptionLabel = document.createElement("label");
+  descriptionLabel.textContent = "Description : ";
+  descriptionLabel.className = "formLabel";
+  const descriptionInput = document.createElement("textarea");
+  descriptionInput.rows = 3;
+  descriptionInput.cols = 15;
   descriptionInput.placeholder = "Description";
+  descriptionInput.maxLength=35;
   descriptionInput.name = "description";
   
   const priorityLabel = document.createElement("label");
-  priorityLabel.textContent = "Priority";
+  priorityLabel.textContent = "Priority : ";
   priorityLabel.className = "formLabel";
   const priorityInput = document.createElement("select");
   priorityInput.name = "priority";
@@ -45,16 +51,14 @@ export function todoForm() {
 
   
   const dateLabel = document.createElement("label");
-  dateLabel.textContent = "Date";
+  dateLabel.textContent = "Date : ";
   dateLabel.className = "formLabel";
   const dateInput = document.createElement("input");
   dateInput.type = "date";
   dateInput.name = "date";
 
-  const submitButton = document.createElement("button");
-  submitButton.classList.add("formBtn","card-button");
-  submitButton.textContent = "Submit";
   formElement.append(
+    formTitle,
     titleLabel, 
     titleInput,
     descriptionLabel,
@@ -63,8 +67,8 @@ export function todoForm() {
     dateInput,
     priorityLabel,
     priorityInput,
-    submitButton
   );
+  extraDiv.className = "card";
   extraDiv.append(formElement);
   return extraDiv;
 }
