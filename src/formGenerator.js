@@ -1,18 +1,31 @@
 import "./style/mainStyle.css";
 export function todoForm() {
+  const extraDiv = document.createElement("div");
+  extraDiv.className = "centerClass";
+
   const formElement = document.createElement("form");
-  formElement.className = "formElement";
+  formElement.classList.add("formElement","card");
+
+  const titleLabel = document.createElement("label");
+  titleLabel.textContent = "Title";
+  titleLabel.className = "formLabel";
   const titleInput = document.createElement("input");
   titleInput.type = "text";
   titleInput.name = "title";
 
+
+  const descriptionLabel = document.createElement("div");
+  descriptionLabel.textContent = "Description";
   const descriptionInput = document.createElement("input");
   descriptionInput.type = "textarea";
   descriptionInput.rows = 4;
   descriptionInput.cols = 50;
   descriptionInput.placeholder = "Description";
   descriptionInput.name = "description";
-
+  
+  const priorityLabel = document.createElement("label");
+  priorityLabel.textContent = "Priority";
+  priorityLabel.className = "formLabel";
   const priorityInput = document.createElement("select");
   priorityInput.name = "priority";
 
@@ -30,18 +43,28 @@ export function todoForm() {
 
   priorityInput.append(option1, option2, option3);
 
+  
+  const dateLabel = document.createElement("label");
+  dateLabel.textContent = "Date";
+  dateLabel.className = "formLabel";
   const dateInput = document.createElement("input");
   dateInput.type = "date";
   dateInput.name = "date";
 
   const submitButton = document.createElement("button");
+  submitButton.classList.add("formBtn","card-button");
   submitButton.textContent = "Submit";
   formElement.append(
+    titleLabel, 
     titleInput,
+    descriptionLabel,
     descriptionInput,
+    dateLabel,
     dateInput,
+    priorityLabel,
     priorityInput,
     submitButton
   );
-  return formElement;
+  extraDiv.append(formElement);
+  return extraDiv;
 }

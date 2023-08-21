@@ -1,6 +1,7 @@
 import { todoForm } from "./formGenerator";
 import task from './todoModule.js';
-import {updateContent , clearContent} from "./uiModule";
+import {updateContent} from "./uiModule";
+import "./style/mainStyle.css";
 
 export class project{
     constructor(name){
@@ -22,15 +23,14 @@ export class project{
     }
 }
 
-
-const contentElement = document.querySelector("#content");
+// Add task button for the specific project
 function createAddButton(projObj) {
   const todoAddBtn = document.createElement("button");
-  todoAddBtn.textContent = projObj.getName();
+  todoAddBtn.textContent = "Add Task";
+  todoAddBtn.className="card-button";
   const extraDiv = document.createElement("div");
   todoAddBtn.addEventListener("click", () => {
     const formElement = todoForm();
-    // clearContent();
     updateContent(formElement);
     formElement.addEventListener("submit", (e) => {
       e.preventDefault();
@@ -48,14 +48,18 @@ function createAddButton(projObj) {
   return extraDiv;
 }
 
+//creates separate task elements from the provided task object and project
 function createTaskElement(taskObj, projObj) {
   const element = document.createElement("div");
-  element.classList.add("todoObject");
+  element.classList.add("todoObject","card");
+
   const title = document.createElement("div");
   title.textContent = taskObj.getTitle();
+  title.className="card-title";
 
   const description = document.createElement("div");
   description.textContent = taskObj.getDescription();
+  description.className="card-content";
 
   const date = document.createElement("div");
   date.textContent = taskObj.getDate();
@@ -74,17 +78,27 @@ function createTaskElement(taskObj, projObj) {
   return element;
 }
 
+//creates the content of a project - has the project name , addtask button and the current tasks
 export function showProject(projObj) {
-//   clearContent();
-  const todoElement = document.createElement("div");
-  todoElement.className = "projectUI";
-  todoElement.append(createAddButton(projObj));
-  const extraDiv = document.createElement('div');
-  extraDiv.className="projectElement";
+  const projectContent = document.createElement("div");
+  projectContent.className = "projectUI";
+
+  const projectHeader = document.createElement('div');
+  projectHeader.className = "projectHeader";
+  
+  const projectTitle = document.createElement('div');
+  projectTitle.textContent=projObj.getName();
+  
+  projectHeader.append(projectTitle);
+  projectHeader.append(createAddButton(projObj));
+  
+  const tasks = document.createElement('div');
+  tasks.className="projectContent";
   projObj.getTasks().forEach((task) => {
     const t = createTaskElement(task,projObj);
-    extraDiv.append(t);
+    tasks.append(t);
   });
-  todoElement.append(extraDiv);
-  return todoElement;
+  
+  projectContent.append(projectHeader,tasks);
+  return projectContent;
 }
