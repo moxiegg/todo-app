@@ -18,7 +18,12 @@ body{
     height: 100vh;
     box-sizing: border-box;
 }
-.todoElement{
+.projectUI{
+    display:grid;
+    gap:10px;
+    grid-template-rows: 1fr 10fr;
+}
+.projectElement{
     display:flex;
     gap:50px;
 }
