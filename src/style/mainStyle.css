@@ -44,6 +44,19 @@ body {
 .low {
   background-color: #a8dadc;
 }
+.taskHeader{
+  display:flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.priorityBadge{
+  width:20px;
+  height:15px;
+  border:1px solid #ccc;
+  border-radius:6px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
 .formElement {
   display: grid;
   grid-template-columns: auto 1fr;
@@ -75,7 +88,6 @@ body {
 
 .card-title {
   font-size: 1.2rem;
-  margin-bottom: 10px;
 }
 
 .card-content {

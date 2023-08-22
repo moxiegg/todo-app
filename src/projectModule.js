@@ -66,10 +66,13 @@ function createAddButton(projObj) {
 function createTaskElement(taskObj, projObj) {
   const element = document.createElement("div");
   element.classList.add("todoObject", "card");
-
+  const taskHeader = document.createElement("div");
+  taskHeader.className = "taskHeader";
   const title = document.createElement("div");
   title.textContent = taskObj.getTitle();
   title.className = "card-title";
+  const priorityBadge = document.createElement("div");
+  priorityBadge.className = "priorityBadge";
 
   const description = document.createElement("div");
   description.textContent = taskObj.getDescription();
@@ -85,11 +88,14 @@ function createTaskElement(taskObj, projObj) {
     projObj.removeTask(taskObj);
     updateContent(showProject(projObj));
   });
-  element.append(title, description, date, delButton);
+  
+  if (taskObj.priority == "high") priorityBadge.classList.add("high");
+  if (taskObj.priority == "low") priorityBadge.classList.add("low");
+  if (taskObj.priority == "medium") priorityBadge.classList.add("medium");
+ 
+  taskHeader.append(title,priorityBadge);
+  element.append(taskHeader, description, date, delButton);
 
-  if (taskObj.priority == "high") element.classList.add("high");
-  if (taskObj.priority == "low") element.classList.add("low");
-  if (taskObj.priority == "medium") element.classList.add("medium");
   return element;
 }
 
