@@ -80,6 +80,7 @@ function createTaskElement(taskObj, projObj) {
 
   const delButton = document.createElement("button");
   delButton.textContent = "Delete";
+  delButton.classList.add("card-button")
   delButton.addEventListener("click", () => {
     projObj.removeTask(taskObj);
     updateContent(showProject(projObj));
