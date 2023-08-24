@@ -80,12 +80,19 @@ body {
   border: 1px solid #ccc;
   border-radius: 8px;
   box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
-  padding: 20px;
+  padding:25px 35px 25px 35px;
   background-color: #fff;
   height: max-content;
   width: max-content;
 }
-
+.todoObject{
+  display: flex;
+  flex-direction: column;
+  gap:10px; 
+}
+.todoObject button{
+  align-self: center;
+}
 .card-title {
   font-size: 1.2rem;
 }
