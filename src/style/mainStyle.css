@@ -3,7 +3,7 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
-  grid-template-columns: 2fr 5fr;
+  grid-template-columns: 1fr 5fr;
   font-family: 'Poppins', sans-serif;
 }
 #sidebar {
@@ -11,9 +11,40 @@ body {
   flex-direction: column;
   box-sizing: border-box;
   height: 100vh;
+  /* gap:20px; */
+  padding-left:10px;
+  padding-right: 10px;
+  background-color: #f7f8fc;
 }
+.projListElement{
+  display:flex;
+  flex-direction: column;
+  gap:5px;
+}
+.projectCard{
+  background-color: #fff;
+  height:40px;
+  border-radius: 4px;
+  display:flex;
+  justify-content: space-around;
+  align-items: center;
+  /* border:1px solid  */
+  border:1px solid #0056b3;
+  color:#0056b3;
+  cursor: pointer;
+}
+.projectCard:hover{
+  border:1px solid black;
+  color:black;
+}
+
+
+
+
+
+
 #content {
-  border-left: 2px solid black;
+  /* border-left: 2px solid black; */
   padding: 20px;
   gap: 50px;
   height: 100vh;
