@@ -3,8 +3,14 @@ body {
   margin: 0;
   padding: 0;
   display: grid;
+  grid-template-rows: 1fr 10fr;
   grid-template-columns: 1fr 5fr;
   font-family: 'Poppins', sans-serif;
+}
+#header{
+  grid-column: 1/3;
+  /* border-bottom:2px solid black; */
+  background-color: #f7f8fc;
 }
 #sidebar {
   display: flex;
@@ -49,6 +55,7 @@ body {
   gap: 50px;
   height: 100vh;
   box-sizing: border-box;
+  border-radius: 100px;
 }
 
 .projectUI {
