@@ -1,7 +1,8 @@
 import { updateContent } from "./uiModule.js";
 import {project,showProject} from "./projectModule.js";
 import "./style/mainStyle.css";
-export function createSidebarElement(projList){
+
+export function createProjectList(projList){
     const sidebarElement=document.createElement("div");
     const projListELement=document.createElement("div");
     projListELement.className="projListElement";
@@ -18,6 +19,17 @@ export function createSidebarElement(projList){
         extraDiv.append(delBtn);
         projListELement.append(extraDiv);
     });
-    sidebarElement.append(projListELement);
-    return sidebarElement;
+    return projListELement;
+}
+export function createProjectHeader(){
+    const projectHeader = document.createElement("div");
+    projectHeader.className="projectHeader";
+    const prjTitle = document.createElement("div");
+    prjTitle.className="title";
+    prjTitle.textContent="Project";
+    const prjAddBtn = document.createElement("button");
+    prjAddBtn.textContent="Add Project";
+    prjAddBtn.className="card-button";
+    projectHeader.append(prjTitle,prjAddBtn);
+    return projectHeader;
 }

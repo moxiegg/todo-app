@@ -1,7 +1,7 @@
 import {project,showProject} from "./projectModule.js";
 import "./style/mainStyle.css";
 import { updateSidebar } from "./uiModule.js";
-import {createSidebarElement}from "./sidebar.js";
+import {createProjectHeader,createProjectList}from "./sidebar.js";
 
 const p1 = new project("Home");
 const contentElement=document.querySelector("#content");
@@ -12,4 +12,4 @@ contentElement.append(showProject(p1));
 const p2 = new project("Work");
 const projList=[];
 projList.push(p1,p2);
-sidebarElement.append(createSidebarElement(projList));
+sidebarElement.append(createProjectHeader(),createProjectList(projList));
