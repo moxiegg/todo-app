@@ -18,7 +18,6 @@ export function todoForm() {
   titleInput.maxLength=20;
   titleInput.name = "title";
 
-
   const descriptionLabel = document.createElement("label");
   descriptionLabel.textContent = "Description : ";
   descriptionLabel.className = "formLabel";
@@ -69,6 +68,27 @@ export function todoForm() {
     priorityInput,
   );
   extraDiv.className = "card";
+  extraDiv.append(formElement);
+  return extraDiv;
+}
+
+export function projForm(){
+  const extraDiv = document.createElement("div");
+  const formElement = document.createElement("form");
+  const titleElement = document.createElement("input");
+  titleElement.type="text";
+  const titleLabel = document.createElement("label");
+  const formTitle = document.createElement("div");
+  formElement.classList.add("formElement","card");
+  formTitle.textContent="Add Project";
+  formTitle.className="formTitle";
+
+  titleLabel.textContent="Project Name:";
+  titleLabel.className="formLabel";
+  titleElement.name="title";
+  titleElement.maxLength=10;
+  
+  formElement.append(formTitle,titleLabel,titleElement);
   extraDiv.append(formElement);
   return extraDiv;
 }

@@ -6,7 +6,7 @@ body {
   grid-template-rows:1fr 8fr;
   grid-template-columns: 1fr 3fr;
   font-family: 'Poppins', sans-serif;
-  background-color: #000;
+  background-color: #fff;
   gap:5px;
 }
 #header{
@@ -16,8 +16,10 @@ body {
   display:flex;
   justify-content: center;
   align-items: center;
+  border:1px solid;
 }
 #sidebar {
+  border:1px solid;
   display: flex;
   flex-direction: column;
   box-sizing: border-box;
@@ -39,13 +41,13 @@ body {
   gap:5px;
 }
 .projectCard{
-  background-color: #fff;
+  background-color: #f7f8fc;
   height:40px;
   border-radius: 4px;
   display:flex;
   justify-content: space-around;
   align-items: center;
-  /* border:1px solid  */
+  border:1px solid ;
   border:1px solid #0056b3;
   color:#0056b3;
   cursor: pointer;
@@ -56,7 +58,7 @@ body {
 }
 
 #content {
-  /* border-left: 2px solid black; */
+  border-left: 1px solid black;
   padding: 20px;
   gap: 50px;
   height: 100vh;

@@ -1,7 +1,7 @@
 import { updateContent } from "./uiModule.js";
 import {project,showProject} from "./projectModule.js";
 import "./style/mainStyle.css";
-
+import { projForm } from "./formGenerator.js";
 export function createProjectList(projList){
     const sidebarElement=document.createElement("div");
     const projListELement=document.createElement("div");
@@ -30,6 +30,16 @@ export function createProjectHeader(){
     const prjAddBtn = document.createElement("button");
     prjAddBtn.textContent="Add Project";
     prjAddBtn.className="card-button";
+    prjAddBtn.addEventListener('click',()=>{
+        const form = projForm();
+        const submitButton = document.createElement("button");
+        submitButton.classList.add("formBtn", "card-button");
+        submitButton.textContent = "Submit"; 
+        form.firstChild.append(submitButton); 
+        updateContent(form);
+        
+    });
+
     projectHeader.append(prjTitle,prjAddBtn);
     return projectHeader;
 }
