@@ -77,6 +77,7 @@ export function projForm(){
   const formElement = document.createElement("form");
   const titleElement = document.createElement("input");
   titleElement.type="text";
+  titleElement.name="title";
   const titleLabel = document.createElement("label");
   const formTitle = document.createElement("div");
   formElement.classList.add("formElement","card");

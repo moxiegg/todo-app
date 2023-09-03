@@ -12,4 +12,4 @@ contentElement.append(showProject(p1));
 const p2 = new project("Work");
 const projList=[];
 projList.push(p1,p2);
-sidebarElement.append(createProjectHeader(),createProjectList(projList));
+sidebarElement.append(createProjectHeader(projList),createProjectList(projList));
